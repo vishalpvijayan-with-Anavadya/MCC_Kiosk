@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/spacing_large"
+            android:paddingRight="@dimen/spacing_large">
+
+            <TextView
+                android:id="@+id/dialogtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="Registration"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/spacing_medium">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/spacing_mlarge"
+            android:background="@drawable/edit_text_round_bg_outline"
+            android:minHeight="@dimen/spacing_xmlarge"
+            android:paddingLeft="@dimen/spacing_middle"
+            android:paddingRight="@dimen/spacing_middle"
+            android:src="@drawable/ic_peoples"
+            android:tint="@color/yellow_900" />
+
+        <EditText
+            android:id="@+id/mobile_no"
+            style="@style/EditText.Flat.Grey"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spacing_xxlarge"
+            android:layout_marginTop="@dimen/spacing_mlarge"
+            android:background="@drawable/edit_text_round_bg_outline"
+            android:digits="0123456789"
+            android:hint="Mobile Number"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="10"
+            android:minHeight="@dimen/spacing_xmlarge"
+            android:minLines="10"
+            android:paddingLeft="@dimen/spacing_middle"
+            android:paddingRight="@dimen/spacing_middle"
+            android:text=""
+            android:textAppearance="@style/primerytext"
+            android:textColor="@color/grey_500"
+            android:textSize="@dimen/spacing_large" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/spacing_medium">
+
+        <!--   <TextView
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:text="NOTE:"
+               android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+               android:textColor="@color/red_500" />
+           <TextView
+               android:id="@+id/dilognote"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="5"
+               android:text=""
+               android:textSize="12dp"
+               android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+               android:textColor="@color/grey_60" />-->
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_medium"
+        android:gravity="end"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/bt_decline"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="50dp"
+            android:layout_weight="5"
+            android:background="@drawable/btn_rectr"
+            android:gravity="center"
+            android:text="Cancel"
+            android:textColor="@color/grey_60" />
+
+
+        <TextView
+            android:layout_width="5dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/bt_accept"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="50dp"
+            android:layout_weight="5"
+            android:background="@drawable/btn_rectr"
+            android:gravity="center"
+            android:text="Proceed"
+            android:textColor="@color/grey_60" />
+
+    </LinearLayout>
+
+</LinearLayout>

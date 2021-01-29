@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/grp_2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/register_id"
+            android:title="Registration"
+            android:visible="false" />
+    </group>
+    <group
+        android:id="@+id/grp_3"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_policies"
+            android:icon="@drawable/policies"
+            android:title="Policies" />
+    </group>
+    <group
+        android:id="@+id/grp_1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_faq"
+            android:icon="@drawable/ic_faq"
+            android:title="FAQ" />
+
+    </group>
+
+
+    <group
+        android:id="@+id/grp_4"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/emp_status"
+            android:icon="@drawable/processing"
+            android:title="Employee status"
+            android:visible="false" />
+    </group>
+    <item
+        android:id="@+id/mail"
+        android:icon="@drawable/processing"
+        android:title="Test Mail"
+        android:visible="false" />
+</menu>

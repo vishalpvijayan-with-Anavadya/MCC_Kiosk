@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.lng.lngattendancesystem">
+
+    <uses-feature
+        android:name="android.hardware.usb.host"
+        android:required="true" /> <!-- Network  user permistions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission
+        android:name="android.permission.WRITE_SECURE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+
+    <uses-feature android:name="android.hardware.location.gps" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" /> <!-- Camera User permistions -->
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".BroadCastReciever.LngAttendance"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:allowBackup">
+        <activity android:name=".Activities.CustomerActivities.Authentication"></activity>
+        <activity android:name=".UtilActivity.RestoreActivity" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <activity android:name=".Activities.CustomerActivities.PergeActivity" />
+        <activity android:name=".Camera.LauxandCameraService.AttendenceMark.MarkAttendanceActivity" />
+        <activity android:name=".Activities.CustomerActivities.PoliciesActivitt" />
+        <activity android:name=".Activities.CustomerActivities.FaqActivity" />
+        <activity android:name=".Activities.CustomerActivities.TimerActivity" />
+        <activity android:name=".Activities.CustomerActivities.BranchBlockActivity" />
+        <activity android:name=".Activities.QRActivity" />
+        <activity
+            android:name=".Utilities.CrashReport.ReportCrashResultActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.CustomerActivities.CustomerOtpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Camera.LauxandCameraService.Registration.RegisterFaceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.CustomerActivities.CustomerRegistrationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.FaceRegisterActivities.OtpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.FaceRegisterActivities.MobileVerification"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.FaceRegisterActivities.FaceRegister"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.CustomerActivities.CustomerDashBoard"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UtilActivity.LcationAndAppPermistionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UtilActivity.NoInternetActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.SplashActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".BroadCastReciever.ConnectivityReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".SerialPortCommunication.UsbService"
+            android:enabled="true" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

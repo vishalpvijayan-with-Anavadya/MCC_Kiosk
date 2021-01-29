@@ -1,0 +1,105 @@
+<resources>
+    <string name="app_name">Facetek Kiosk</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="copywrite">Designed by LNG Technologies.</string>
+    <string name="nointernetmsg">Could not connect to the internet. Please check your network.</string>
+    <string name="exeptionMsg">Oops.! Something went Wrong try again</string>
+    <string name="otpmheader">We have sent the One Time Password</string>
+
+
+    <string name="cleared_att_rec">Cleared Attendance successfully</string>
+    <string name="Enter_code_to_login">Enter Passcode to Login</string>
+
+    // Validation Messages
+    // Employees registration messages
+    <string name="erf_ccmob">Enter Customer code and Mobile number</string>
+    <string name="erf_mobile">Enter 10 digit Mobile number</string>
+    <string name="erf_Invalid_Cc">Invalid Customer code</string>
+    <string name="no_records_found">No records Found!</string>
+    <string name="attendance_cleared">Attendance cleared</string>
+
+
+    <string name="progressbarmsg">Loading..</string>
+
+    <string name="AZURE_BASE_URL">https://centralindia.api.cognitive.microsoft.com/face/v1.0/largefacelists/</string>
+    <string name="AZURE_DESTINATION_URL">/persistedFaces</string>
+
+    // DEV
+    <string name="AZURE_SUBSCRIPTION_KEY">Ocp-Apim-Subscription-Key</string>
+    <string name="AZURE_SUBSCRIPTION_VALUE">935ac35bce0149d8bf2818b936e25e1c</string>
+    // FT
+    <!--<string name="AZURE_SUBSCRIPTION_KEY">Ocp-Apim-Subscription-Key</string>
+    <string name="AZURE_SUBSCRIPTION_VALUE">6534dd1cc0bd4562a856ca01a1f5cf83</string>
+-->
+
+    <!--  AZURE Base URL API Call -->
+    <!-- <string name="AZURE_BASE_URL">https://centralindia.api.cognitive.microsoft.com/face/v1.0/facelists/</string>-->
+
+
+    <string name="AZURE_FACEDETECT_URL">https://centralindia.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId=true&amp;returnFaceLandmarks=truereturnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup&amp;recognitionModel=recognition_02&amp;returnRecognitionModel=true</string>
+    <string name="AZURE_FACERECOGNIZATION_URL">https://centralindia.api.cognitive.microsoft.com/face/v1.0/findsimilars</string>
+    https://centralindia.api.cognitive.microsoft.com/face/v1.0/detect
+
+
+    // Validation Messages
+    // Employees registration messages
+    <string name="erf_ccbrcode">Enter Customer code,Branch code &amp; Kiosk Number</string>
+    <string name="erf_cc">Enter Customer Code</string>
+    <string name="erf_branchcode">Enter Branch Code</string>
+    <string name="INVALID_KIOSK_NUMBER">Invalid Kiosk Number</string>
+    <string name="mobile">Enter 10 digit Mobile Number</string>
+    <string name="rg_face">You have already been registered with the Attendance System !</string>
+
+    <string name="out_marked">Office OUT Already marked for the day!</string>
+    <string name="in_marked">Office IN Already Marked for the Day!</string>
+    <string name="Marked_for_the_Day">Attendance IN And OUT marked for the day</string>
+
+    <string name="IN_MARKED_FOR_THE_DAY">Attendance IN marked for the day</string>
+    <string name="OUT_MARKED_FOR_THE_DAY">Attendance OUT marked for the day</string>
+    <string name="att_Not_Aut_marked">You are not Authorized to Mark your Attendance in Kiosk Device</string>
+    <string name="att_Not_Aut_Emergeny_in_Break">Emergency Out cannot be used for Break Shift Employees</string>
+
+
+    // Otp registration messages
+    <string name="of_Ot">Invalid OTP!</string>
+    <string name="of_evt">Invalid OTP!</string>
+
+
+    // generic Messages
+    <string name="No_Response_from_server_500">Server is not responding (unavailable) at this moment, Try again!</string>
+    <string name="Internet">Internet seems to be too slow! Please wait</string>
+    <string name="Internet_slow">Internet seems to be too slow! try again</string>
+    <string name="Internet_CONNECTION">Internet is not Available !</string>
+    <string name="very_long_lorem_ipsum">
+         To get the most out of Facial Recognition, Pay attention to the following when you capturing your face.\nEnsure there is sufficient light, but avoid direct sunlight.\nEnsure that no one else appears on the screen while you are capturing your face.\nEnsure that your face is not obscured by a hat, hair, sunglasses, makeup etc.\ndo not look up or down, close your eyes, or capturing your face from side.\nEnsure that your whole face is clearly visible from the front and appears inside the boundary on your screen after capturing your face, you can mark your attendance using facial recognition
+    </string>
+
+    //azure exeption messages
+    <string name="face_list_notfound">Unable to find the Face directory! Contact Service provider.</string>
+
+    // Face registration
+    <string name="could_not_recognise">Couldn’t recognize your face. Retry! </string>
+    <string name="Marked">Attendance Already Marked for the day !</string>
+    <string name="frf_fnf">Face did not match! Scan your face again</string>
+    <string name="frf_captureFace">Capture your Face</string>
+
+    <string name="Confiramtion_dialog"><b>Confirmation</b></string>
+    <string name="cancel_text"><b>Cancel</b></string>
+    <string name="proceed_text"><b>Proceed</b></string>
+    <string name="name"><b>Name :</b></string>
+    <string name="phonenumber"><b>Phone Number :</b></string>
+    <string name="notetext">Make sure the Mobile number And Name is correct? If yes proceed further</string>
+
+
+    // serever Updation In/out dietails failed To server msg
+    <string name="in_data_to_server">office IN dietails Failed to update to server !</string>
+    <string name="out_data_to_server">office OUT dietails Failed to update to server !</string>
+
+    <string name="locationmsg">Enable permission to access the Application! </string>
+    <string name="powerby"> &#169; 2020 LNG Technologies Pvt Ltd</string>
+    <string name="facetek_addrs"> www.facetek.in</string>
+</resources>

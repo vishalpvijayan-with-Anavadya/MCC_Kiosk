@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu>
+
+    <!--<item
+        app:showAsAction="withText"
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_homeicon"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/navigation_Attendance"
+        android:icon="@drawable/ic_markattendance"
+        android:title="Attendance" />
+
+    <item
+        android:id="@+id/navigation_leave"
+        android:icon="@drawable/ic_attendance"
+        android:title="Leave" />
+    <item
+        android:id="@+id/navigation_myaccount"
+        android:icon="@drawable/ic_myaccount"
+        android:title="My Account" />-->
+
+</menu>

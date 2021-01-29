@@ -1,0 +1,73 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/qr_generate"
+        android:icon="@drawable/qr_white"
+        android:orderInCategory="100"
+        android:visible="false"
+        android:title="QR Attendance"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/status"
+        android:orderInCategory="100"
+        android:visible="true"
+        android:title="status"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/emergency_Out"
+        android:orderInCategory="100"
+        android:visible="false"
+        android:title="Emergency Office Out"
+        app:showAsAction="never" />
+
+
+
+
+    <item
+        android:id="@+id/configuration"
+        android:orderInCategory="100"
+        android:title="Configuration"
+        android:visible="true"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/backup"
+        android:orderInCategory="100"
+        android:title="Backup DB"
+        android:visible="false"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/restore"
+        android:orderInCategory="100"
+        android:title="Restore"
+        android:visible="false"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/backup_dat_file"
+        android:orderInCategory="100"
+        android:title="Backup dat file"
+        android:visible="false"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/restore_dat_file"
+        android:orderInCategory="100"
+        android:title="Restore dat file"
+        android:visible="false"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/clearAtt"
+        app:itemTextColor="@color/green_A400"
+        android:orderInCategory="100"
+        android:title="Clear Attendance History"
+        android:visible="false"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/remove_employee"
+        app:itemTextColor="@color/green_A400"
+        android:orderInCategory="100"
+        android:title="Purge Employee"
+        android:visible="true"
+        app:showAsAction="never" />
+</menu>
