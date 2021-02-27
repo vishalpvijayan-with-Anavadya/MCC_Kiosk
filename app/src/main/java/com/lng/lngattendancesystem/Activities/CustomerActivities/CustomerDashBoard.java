@@ -300,7 +300,8 @@ public class CustomerDashBoard extends AppCompatActivity implements Connectivity
         }
         bottom_sheet = findViewById(R.id.bottom_sheet);
         mBehavior = BottomSheetBehavior.from(bottom_sheet);
-        new GetLatestVersion().execute();
+        //Check update and display update dialog
+        //new GetLatestVersion().execute();
         //changeIcon(1);
         getConfiguration();
         listFiles();
@@ -736,7 +737,7 @@ public class CustomerDashBoard extends AppCompatActivity implements Connectivity
         super.onResume();
         setFilters();
         startService(UsbService.class, usbConnection, null); //
-        new GetLatestVersion().execute();
+        //new GetLatestVersion().execute();
         invalidateOptionsMenu();
     }
 

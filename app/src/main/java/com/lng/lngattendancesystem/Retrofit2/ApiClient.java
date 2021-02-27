@@ -14,6 +14,7 @@ public class ApiClient {
      */
      private static String BASE_URL = "http://52.183.137.54:8080/attnd-api-gateway-service/api/";
 
+    //private static String BASE_URL = "http://36.255.87.28:8080/attnd-api-gateway-service/api/";
 
     private static final OkHttpClient okHttpClient = new OkHttpClient.Builder()
             .readTimeout(10, TimeUnit.SECONDS)
@@ -23,8 +24,6 @@ public class ApiClient {
     /***
      * OFFICE Dev API
      */
-
-    //private static String BASE_URL = "http://36.255.87.28:8080/attnd-api-gateway-service/api/";
 
     private static Retrofit retrofit = null;
 

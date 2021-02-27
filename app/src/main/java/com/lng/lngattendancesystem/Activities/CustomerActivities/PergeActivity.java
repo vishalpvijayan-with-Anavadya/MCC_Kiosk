@@ -212,13 +212,14 @@ public class PergeActivity extends AppCompatActivity {
                 //Toast.makeText(PergeActivity.this, "Face is :" + faceID, Toast.LENGTH_SHORT).show();
                 boolean status = false;
                 int s = FSDK.SetName(mDraw.mTracker, faceID, "");
-                status = FSDK.FSDKE_OK == s;
+                status = FSDK.FSDKE_OK == s || s == -18;
                 if (status == false) {
                     Toast.makeText(PergeActivity.this, "Failed 1", Toast.LENGTH_SHORT).show();
 
                 }
                 int d = FSDK.PurgeID(mDraw.mTracker, faceID);
-                if (FSDK.FSDKE_OK == d) {
+                Log.d("DeleteEmployee", FSDK.FSDKE_OK +", "+ d+", "+faceID+", "+s);
+                if (FSDK.FSDKE_OK == d || d == -18) {
                     //Toast.makeText(PergeActivity.this, "Second Success", Toast.LENGTH_SHORT).show();
                     boolean deleted = SplashActivity.databaseHandler.deleteEmployee(empId);
                     if (deleted) {

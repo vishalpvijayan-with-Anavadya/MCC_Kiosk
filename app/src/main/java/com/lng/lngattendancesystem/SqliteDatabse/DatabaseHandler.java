@@ -1149,9 +1149,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     employee.setEmpId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(KEY_EMP_ID))));
                     employee.setEmpName(cursor.getString(cursor.getColumnIndex(KEY_EMP_NAME)));
                     employee.setEmpPresistedFaceId(cursor.getString(cursor.getColumnIndex(KEY_PERSISTED_ID)));
+                    Log.d("EMPLOYEELIST", employee.getEmpId()+", "+employee.getEmpName()+", "+employee.getEmpPresistedFaceId());
                     employeeList.add(employee);
                 } while (cursor.moveToNext());
                 db.close();
+
                 return employeeList;
             } else {
                 return null;
