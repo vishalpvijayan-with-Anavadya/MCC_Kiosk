@@ -83,10 +83,10 @@
                     <EditText
                         android:id="@+id/mobile_no"
                         style="@style/primerytext"
+
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/edit_text_round_bg_white"
-                        android:digits="0123456789"
                         android:hint="Mobile Number"
                         android:imeOptions="actionDone"
                         android:inputType="number"
@@ -94,6 +94,38 @@
                         android:minHeight="@dimen/spacing_xmlarge"
                         android:minLines="10"
                         android:text="" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        style="@style/primerytext"
+                        android:id="@+id/btn_emp_code_verify"
+                        android:textAllCaps="false"
+                        android:background="@color/white"
+                        android:text="Employee Code"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <Button
+                        style="@style/primerytext"
+                        android:id="@+id/btn_mobile_verify"
+                        android:textAllCaps="false"
+                        android:background="@color/colorPrimary"
+                        android:textColor="@color/white"
+                        android:text="Mobile No."
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
                 </LinearLayout>
 
                 <Button

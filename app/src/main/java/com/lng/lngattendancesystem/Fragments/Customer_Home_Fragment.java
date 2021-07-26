@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -59,6 +60,7 @@ public class Customer_Home_Fragment extends Fragment {
     CustomerDashBoard ref;
     private MaterialRippleLayout ripplefacereg, ripplemark;
     private ImageView customerLogo;
+    private TextView txtFacetekIntent;
     private long TIME_OUT = 1000;
     private boolean rippleInClicked = false;
     private TextView customerName, branchName;
@@ -91,8 +93,17 @@ public class Customer_Home_Fragment extends Fragment {
         customerLogo = view.findViewById(R.id.image);
         customerName = view.findViewById(R.id.customer_name);
         branchName = view.findViewById(R.id.branch_name);
+        txtFacetekIntent = view.findViewById(R.id.txtFacetekIntent);
         changeCustomerDetailes();
         // getTimefromSereverApi();
+        txtFacetekIntent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facetek.in/login"));
+                startActivity(browserIntent);
+
+            }
+        });
 
         ripplefacereg.setOnClickListener(new View.OnClickListener() {
             @Override

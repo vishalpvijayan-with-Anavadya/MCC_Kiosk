@@ -1034,6 +1034,7 @@ public class ProcessAndMarkAttenance extends View {
         try {
             JsonObject inputData = (JsonObject) new JsonParser().parse(jsonObject.toString());
             final String name = SplashActivity.databaseHandler.getEmployeeNameByEmpID(empId);
+            Log.e(" INPUT FOR ATTENDNACE : ",name);
 
             ApiInterface apiClient = ApiClient.getApiClient().create(ApiInterface.class);
             Call<MarkedAttendanceStatusResponce> attendanceStatus = apiClient.getAttendanceInstatus(inputData);
@@ -1700,6 +1701,10 @@ public class ProcessAndMarkAttenance extends View {
                         SynchedMainResponse synchedMainResponse = response.body();
 
                         List<SynchSuccessedData> synchedList = new ArrayList<>();
+
+                        boolean xyz = synchedMainResponse.getStatus().getError();
+
+                        Log.e("Error Value will be shown here :", String.valueOf(xyz));
 
 
                         try {

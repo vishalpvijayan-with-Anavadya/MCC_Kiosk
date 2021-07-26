@@ -101,6 +101,7 @@ public class CustomerOtpActivity extends AppCompatActivity {
         bt_continue = findViewById(R.id.continue_id);
         userSession = new UserSession(CustomerOtpActivity.this);
         //tv_resentotpid = (TextView) findViewById(R.id.tv_resentotpid);
+
         tv_mobileno.setText(getString(R.string.otpmheader));
         progressDialog = new ProgressDialog(CustomerOtpActivity.this);
         progressDialog.setIndeterminate(true);

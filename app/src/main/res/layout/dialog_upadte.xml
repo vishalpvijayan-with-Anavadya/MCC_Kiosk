@@ -19,7 +19,7 @@
             android:id="@+id/icon"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:tint="@android:color/white"
+            app:tint="@android:color/white"
             app:srcCompat="@drawable/attendence_right" />
 
         <TextView

@@ -8,13 +8,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-
-    /**
-     * FT SERVER IP
-     */
+//    // PRODUCTION SERVER
      private static String BASE_URL = "http://52.183.137.54:8080/attnd-api-gateway-service/api/";
 
-    //private static String BASE_URL = "http://36.255.87.28:8080/attnd-api-gateway-service/api/";
+    // DEVELOPMENT SERVER
+//    private static String BASE_URL = "http://36.255.87.28:8080/attnd-api-gateway-service/api/";
+//    private static String BASE_URL = "http://122.166.248.191/attnd-api-gateway-service/api/";
+//private static String BASE_URL = "http://122.166.248.191:8080/attnd-api-gateway-service/api/";
 
     private static final OkHttpClient okHttpClient = new OkHttpClient.Builder()
             .readTimeout(10, TimeUnit.SECONDS)

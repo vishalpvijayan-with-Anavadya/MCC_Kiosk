@@ -52,6 +52,7 @@
     <string name="erf_branchcode">Enter Branch Code</string>
     <string name="INVALID_KIOSK_NUMBER">Invalid Kiosk Number</string>
     <string name="mobile">Enter 10 digit Mobile Number</string>
+    <string name="employee_code">Enter Valid Employee Code</string>
     <string name="rg_face">You have already been registered with the Attendance System !</string>
 
     <string name="out_marked">Office OUT Already marked for the day!</string>
@@ -100,6 +101,7 @@
     <string name="out_data_to_server">office OUT dietails Failed to update to server !</string>
 
     <string name="locationmsg">Enable permission to access the Application! </string>
-    <string name="powerby"> &#169; 2020 LNG Technologies Pvt Ltd</string>
+    <string name="powerby"> &#169; 2021 LNG Technologies Pvt Ltd</string>
     <string name="facetek_addrs"> www.facetek.in</string>
+    <string name="passcode">passCode</string>
 </resources>

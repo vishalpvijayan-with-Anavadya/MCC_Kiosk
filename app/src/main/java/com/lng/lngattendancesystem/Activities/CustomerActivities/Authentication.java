@@ -15,7 +15,6 @@ import com.lng.lngattendancesystem.Utilities.UserSession;
 public class Authentication extends AppCompatActivity {
 
     private EditText et_passcode;
-    private AppCompatButton btn_login;
     private UserSession userSession;
 
     @Override
@@ -28,7 +27,7 @@ public class Authentication extends AppCompatActivity {
 
     private void initUI() {
         et_passcode = findViewById(R.id.et_passcode);
-        btn_login = findViewById(R.id.btn_login);
+        AppCompatButton btn_login = findViewById(R.id.btn_login);
         userSession = new UserSession(Authentication.this);
         generatePassword(userSession.getBrID(), userSession.getCustId());
 

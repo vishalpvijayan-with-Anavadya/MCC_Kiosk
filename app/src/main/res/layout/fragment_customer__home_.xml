@@ -225,6 +225,7 @@
         android:layout_weight=".5"
         android:fontFamily="@font/montserrat"
         android:gravity="center"
+        android:id="@+id/txtFacetekIntent"
         android:text="@string/facetek_addrs"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/spacing_smlarge" />

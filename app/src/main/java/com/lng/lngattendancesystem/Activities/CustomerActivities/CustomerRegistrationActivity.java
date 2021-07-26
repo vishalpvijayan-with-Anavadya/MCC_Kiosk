@@ -1,11 +1,13 @@
 package com.lng.lngattendancesystem.Activities.CustomerActivities;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -91,9 +93,9 @@ public class CustomerRegistrationActivity extends AppCompatActivity implements C
         enteredKioskNumber = kioskNumber.getText().toString().trim();
         if (enteredCostumercode.isEmpty() && enteredBranchCode.isEmpty() && enteredKioskNumber.isEmpty()) {
             toastIconError(getString(R.string.erf_ccbrcode));
-        } else if (enteredCostumercode.isEmpty() || enteredCostumercode.length() != 6) {
+        } else if (enteredCostumercode.length() != 6) {
             toastIconError(getString(R.string.erf_cc));
-        } else if (enteredBranchCode.isEmpty() || enteredBranchCode.length() != 8) {
+        } else if (enteredBranchCode.length() != 8) {
             toastIconError(getString(R.string.erf_branchcode));
         } else if (enteredKioskNumber.isEmpty() || (Integer.parseInt(enteredKioskNumber)) <= 0 || (Integer.parseInt(enteredKioskNumber)) > 9999) {
             toastIconError(getString(R.string.INVALID_KIOSK_NUMBER));
@@ -123,9 +125,11 @@ public class CustomerRegistrationActivity extends AppCompatActivity implements C
             inputDetails.put("kioskCode", userSession.getAndroidDeviceID());
             inputDetails.put("deviceOveride", false);
             JsonObject inputData = (JsonObject) new JsonParser().parse(inputDetails.toString());
+            Log.e("INPUT FOR OTP :", String.valueOf(inputData));
             ApiInterface apiClient = ApiClient.getApiClient().create(ApiInterface.class);
             Call<MainCustRegResponce> mainCustRegResponceCall = apiClient.getCustRegister(inputData);
             mainCustRegResponceCall.enqueue(new Callback<MainCustRegResponce>() {
+                @SuppressLint("LongLogTag")
                 @Override
                 public void onResponse(Call<MainCustRegResponce> call, Response<MainCustRegResponce> response) {
                     if (response.isSuccessful()) {
@@ -134,12 +138,30 @@ public class CustomerRegistrationActivity extends AppCompatActivity implements C
                             Status status = mainCustRegResponce.getStatus();
                             if (!status.getError()) {
                                 _removeProgressDialog();
+                                //checking .....VISHAL
+                                String otp = response.body().getOtpDto().getOtp().toString();
+                                String xyz = String.valueOf(userSession.getOTP());
+                                String name = String.valueOf(userSession.getEmpName());
+                                String mobile_number = String.valueOf(userSession.getMobileNo());
+                                //
                                 userSession.setOTP(mainCustRegResponce.getOtpDto().getOtp());
                                 userSession.setCustId(mainCustRegResponce.getCustId());
                                 userSession.setBrID(mainCustRegResponce.getBrId());
                                 userSession.setBranchcode(enteredBranchCode);
                                 userSession.setCustomerCode(enteredCostumercode);
                                 userSession.setKeyKioskNumber(enteredKioskNumber);
+
+
+                                //
+                                Log.e("YOUR MOBILE NUMBER IS : ",mobile_number);
+                                Log.e("YOUR OTP IS : ",otp);
+                                Log.e("YOUR NAME IS : ",name);
+                                Toast.makeText(CustomerRegistrationActivity.this, ""+otp, Toast.LENGTH_SHORT).show();
+
+                                //
+
+//                                Toast.makeText(CustomerRegistrationActivity.this, "Your OTP is :"+xyz, Toast.LENGTH_SHORT).show();
+
                                 Intent intent = new Intent(CustomerRegistrationActivity.this, CustomerOtpActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);

@@ -35,14 +35,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class BranchBlockActivity extends AppCompatActivity {
-    private Button submit;
-    private LinearLayout selectBranch, selectBlock;
+    Button submit;
+    LinearLayout selectBranch, selectBlock;
     private EditText branch, block;
     private UserSession userSession;
     private ProgressDialog progressDialog;
-    private long TIME_OUT = 1000;
+    long TIME_OUT = 1000;
     private Context context;
-    private BroadcastReceiver broadcastReceiver = new ConnectivityReceiver();
+    BroadcastReceiver broadcastReceiver = new ConnectivityReceiver();
     private String customerCode;
     private BranchDetailsResponseModel branchDetails;
     private BlockDetailsResponseModel blockDetail;

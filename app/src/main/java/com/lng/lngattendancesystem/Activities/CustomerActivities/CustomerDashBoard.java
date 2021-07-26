@@ -367,7 +367,7 @@ public class CustomerDashBoard extends AppCompatActivity implements Connectivity
 
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(final MenuItem item) {
+            public boolean onNavigationItemSelected(MenuItem item) {
                 actionBar.setTitle(item.getTitle());
                 drawer.closeDrawers();
                 Fragment selectedfrag = null;

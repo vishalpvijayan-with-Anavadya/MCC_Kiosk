@@ -162,6 +162,9 @@ class ProcessImageAndRegister extends View {
             return; //nothing to process or name is being entered now
         }
 
+        /*
+        int canvasWidth = canvas.getWidth();
+         */
         int canvasWidth = canvas.getWidth();
         //int canvasHeight = canvas.getHeight();
 

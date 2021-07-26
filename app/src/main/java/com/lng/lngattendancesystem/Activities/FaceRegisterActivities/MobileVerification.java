@@ -1,11 +1,15 @@
 package com.lng.lngattendancesystem.Activities.FaceRegisterActivities;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -26,6 +30,7 @@ import com.lng.lngattendancesystem.Activities.SplashActivity;
 import com.lng.lngattendancesystem.BroadCastReciever.ConnectivityReceiver;
 import com.lng.lngattendancesystem.BroadCastReciever.LngAttendance;
 import com.lng.lngattendancesystem.MainActivity;
+import com.lng.lngattendancesystem.Models.EmployeeByCodeOrMobile.EmployeeCodeMobile;
 import com.lng.lngattendancesystem.Models.FaceRegistration.MainRegresponce;
 import com.lng.lngattendancesystem.Models.Status;
 import com.lng.lngattendancesystem.R;
@@ -46,12 +51,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MobileVerification extends AppCompatActivity {
-    private Button btn_verify;
+    private Button btn_verify,btn_mobile_verify,btn_emp_code_verify;
     private EditText mobile_no;
     private UserSession userSession;
     private ProgressDialog progressDialog;
     private long TIME_OUT = 1000;
     private BroadcastReceiver broadcastReceiver = new ConnectivityReceiver();
+    private int emp_or_mob = 1;
 
     private static boolean validatePhoneNumber(String phoneNo) {
 
@@ -69,6 +75,17 @@ public class MobileVerification extends AppCompatActivity {
             else return phoneNo.matches("\\(\\d{3}\\)-\\d{3}-\\d{4}");
 
     }
+
+    private static boolean validateEmployeeCode(String employeeCode) {
+
+        //validate phone numbers of format "LNG201"
+        if (employeeCode.matches("\\d{2}")){
+
+        }
+        return true;
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,49 +112,202 @@ public class MobileVerification extends AppCompatActivity {
 
     private void initUiComponent() {
         btn_verify = findViewById(R.id.btn_verify);
+        btn_emp_code_verify = findViewById(R.id.btn_emp_code_verify);
+        btn_mobile_verify = findViewById(R.id.btn_mobile_verify);
         mobile_no = findViewById(R.id.mobile_no);
+
+        btn_emp_code_verify.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
+            @Override
+            public void onClick(View v) {
+
+                mobile_no.setText("");
+                mobile_no.setAllCaps(true);
+                btn_mobile_verify.setBackgroundResource(R.color.white);
+                btn_mobile_verify.setTextColor(R.color.colorPrimary);
+                btn_emp_code_verify.setTextColor(Color.WHITE);
+                btn_emp_code_verify.setBackgroundResource(R.color.colorPrimary);
+                mobile_no.setHint("Employee Code");
+                mobile_no.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+                emp_or_mob = 0;
+
+            }
+        });
+
+        btn_mobile_verify.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
+            @Override
+            public void onClick(View v) {
+                mobile_no.setText("");
+                btn_emp_code_verify.setBackgroundResource(R.color.white);
+                btn_emp_code_verify.setTextColor(R.color.colorPrimary);
+                btn_mobile_verify.setTextColor(Color.WHITE);
+                btn_mobile_verify.setBackgroundResource(R.color.colorPrimary);
+                mobile_no.setHint("Mobile Number");
+                mobile_no.setInputType(InputType.TYPE_CLASS_NUMBER);
+                emp_or_mob = 1;
+
+            }
+        });
+
+
+
+
         // registerForBroadcaseReceier();
         btn_verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onClickDesable(v);
                 hideKeyboard(v);
-                if (!validatePhoneNumber(mobile_no.getText().toString()) && mobile_no.getText().toString().length() != 10) {
-                    toastIconError(getString(R.string.mobile));
-                } else {
 
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (Util.isConnected(MobileVerification.this)) {
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        progressDialog.show();
-                                        getCallEmployeeApi(mobile_no.getText().toString());
-                                    }
-                                });
+                if(emp_or_mob == 0){
+
+                    if(mobile_no.getText().toString().length() <= 3){
+
+                        toastIconError(getString((R.string.employee_code)));
+
+                    }else {
+                        employeeValidation();
+                    }
 
 
-                            } else {
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        progressDialog.dismiss();
-                                        toastIconError(getString(R.string.Internet_CONNECTION));
-                                    }
-                                });
+                }else {
+
+                    if (!validatePhoneNumber(mobile_no.getText().toString()) && mobile_no.getText().toString().length() != 10) {
+                        toastIconError(getString(R.string.mobile));
+                    } else {
+
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (Util.isConnected(MobileVerification.this)) {
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            progressDialog.show();
+                                            getCallEmployeeApi(mobile_no.getText().toString());
+                                        }
+                                    });
 
 
+                                } else {
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            progressDialog.dismiss();
+                                            toastIconError(getString(R.string.Internet_CONNECTION));
+                                        }
+                                    });
+
+
+                                }
                             }
-                        }
-                    }).start();
+                        }).start();
+
+
+                    }
 
 
                 }
 
             }
         });
+    }
+
+    private void employeeValidation() {
+
+        getCallemployeeCodeOrPhone(mobile_no.getText().toString());
+        
+    }
+
+
+
+    private void getCallemployeeCodeOrPhone(String toString) {
+        if (SplashActivity.databaseHandler == null)
+            return;
+        List<getCustomerAllDitailes> cutsomerDetalesList = SplashActivity.databaseHandler.getCustomerAllrecords();
+        final String custId;
+        String BranchId;
+        if (cutsomerDetalesList == null) {
+            Intent intent = new Intent(MobileVerification.this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            return;
+        }
+        custId = cutsomerDetalesList.get(0).getCustomerId();
+        BranchId = cutsomerDetalesList.get(0).getBranchId();
+        String emp_Id = mobile_no.getText().toString();
+
+        JsonObject jsonObject = getJsonNewObjectess(custId,BranchId, emp_Id,"empCode");
+        ApiInterface apiClient = ApiClient.getApiClient().create(ApiInterface.class);
+
+        Call<EmployeeCodeMobile> call = apiClient.getEmpByCodeOrMobile(jsonObject);
+        call.enqueue(new Callback<EmployeeCodeMobile>() {
+            @Override
+            public void onResponse(Call<EmployeeCodeMobile> call, Response<EmployeeCodeMobile> response) {
+                if (response.isSuccessful()) {
+                    try {
+                        EmployeeCodeMobile mainRegresponce = response.body();
+                        EmployeeCodeMobile.Status1 status = mainRegresponce.getStatus();
+                        if (!status.getError()) {
+                            _removeProgressDialog();
+                            userSession.setMobileNO(toString);
+
+                            String userParsistedFaceId = mainRegresponce.getData1().getEmpPresistedFaceId();
+
+                            if (mainRegresponce != null) {
+
+                                userSession.setEmpId(mainRegresponce.getData1().getEmpId());
+                                userSession.setEmpName(mainRegresponce.getData1().getEmpName());
+                                userSession.setShifttype(mainRegresponce.getData1().getShiftType());
+                                userSession.setPersistedFaceId(userParsistedFaceId);
+                                userSession.setEmpCode(mainRegresponce.getData1().getEmpCode());
+
+
+                                if (SplashActivity.databaseHandler.isEmployeeExist(String.valueOf(userSession.getEmpId()))) {
+
+                                    if (userParsistedFaceId == null || userParsistedFaceId.equalsIgnoreCase("null")) {
+                                        showConfirmDialog();
+                                    } else {
+
+                                        progressDialog.dismiss();
+                                        toastIconError("You are already a Registered user!");
+                                        Intent intent = new Intent(MobileVerification.this, CustomerDashBoard.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                } else {
+                                    showConfirmDialog();
+                                }
+
+
+                            }
+                        } else {
+                            _removeProgressDialog();
+                            toastIconError(status.getMessage());
+                        }
+
+                    } catch (Exception e) {
+                        _removeProgressDialog();
+                        toastIconError(getString(R.string.No_Response_from_server_500));
+                        e.printStackTrace();
+                    }
+
+                } else {
+                    _removeProgressDialog();
+                    toastIconError(getString(R.string.No_Response_from_server_500));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<EmployeeCodeMobile> call, Throwable t) {
+//                Toast.makeText(MobileVerification.this, ""+t.toString(), Toast.LENGTH_SHORT).show();
+                Log.e("",t.toString());
+            }
+        });
+
+
     }
 
     private void getCallEmployeeApi(final String mobileno) {
@@ -154,7 +324,8 @@ public class MobileVerification extends AppCompatActivity {
         }
         custId = cutsomerDetalesList.get(0).getCustomerId();
         BranchId = cutsomerDetalesList.get(0).getBranchId();
-        JsonObject jsonObject = getJsonObjectss(custId, BranchId, mobileno);
+        String emp_Id = mobile_no.getText().toString();
+        JsonObject jsonObject = getJsonObjectss(custId, BranchId, emp_Id);
         ApiInterface apiClient = ApiClient.getApiClient().create(ApiInterface.class);
         Call<MainRegresponce> mainCustRegResponceCall = apiClient.getEmployeeDetails(jsonObject);
         mainCustRegResponceCall.enqueue(new Callback<MainRegresponce>() {
@@ -261,6 +432,22 @@ public class MobileVerification extends AppCompatActivity {
             //empDitales.put("blkId", userSession.getBlockId());
             JsonObject inputData = (JsonObject) new JsonParser().parse(empDitales.toString());
             return inputData;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public JsonObject getJsonNewObjectess(String custId, String brId, String mobileno, String loginType) {
+        try {
+            JSONObject empDetails = new JSONObject();
+            empDetails.put("refBrId", brId);
+            empDetails.put("refCustId", custId);
+            empDetails.put("mobileNoOrCode", mobileno);
+            empDetails.put("verificationType", loginType);
+            //empDitales.put("blkId", userSession.getBlockId());
+            JsonObject inputData1 = (JsonObject) new JsonParser().parse(empDetails.toString());
+            return inputData1;
         } catch (Exception e) {
             e.printStackTrace();
         }

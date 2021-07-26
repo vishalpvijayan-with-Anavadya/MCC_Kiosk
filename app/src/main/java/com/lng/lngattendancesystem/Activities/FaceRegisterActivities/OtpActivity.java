@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -24,6 +25,7 @@ import com.lng.lngattendancesystem.Activities.CustomerActivities.BranchBlockActi
 import com.lng.lngattendancesystem.Activities.SplashActivity;
 import com.lng.lngattendancesystem.BroadCastReciever.LngAttendance;
 import com.lng.lngattendancesystem.R;
+import com.lng.lngattendancesystem.Retrofit2.ApiInterface;
 import com.lng.lngattendancesystem.Utilities.CrashReport.ReportCrashResultActivity;
 import com.lng.lngattendancesystem.Utilities.Tools;
 import com.lng.lngattendancesystem.Utilities.UserSession;
@@ -39,6 +41,7 @@ public class OtpActivity extends AppCompatActivity {
     Pinview pinview;
     UserSession userSession;
     ImageView back;
+    ApiInterface apiInterface;
     private CountDownTimer countDownTimer;
 
     @Override
@@ -67,13 +70,13 @@ public class OtpActivity extends AppCompatActivity {
         userSession = new UserSession(OtpActivity.this);
         //tv_resentotpid = (TextView) findViewById(R.id.tv_resentotpid);
         //  tv_mobileno.setText(getString(R.string.otpmheader) + " +91" + " " + "7204208262");
-        tv_mobileno.setText(getString(R.string.otpmheader));
+        tv_mobileno.setText(getString(R.string.otpmheader) + userSession.getMobileNo() + userSession.getOTP());
         progressDialog = new ProgressDialog(OtpActivity.this);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage(getString(R.string.progressbarmsg));
         progressDialog.setCancelable(false);
 
-        //Toast.makeText(OtpActivity.this, "" + userSession.getOTP(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(OtpActivity.this, "Your OTP is : " + userSession.getOTP(), Toast.LENGTH_LONG).show();
 
         back = findViewById(R.id.back);
 

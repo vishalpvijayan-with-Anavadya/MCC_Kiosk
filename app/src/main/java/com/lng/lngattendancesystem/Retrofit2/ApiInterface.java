@@ -10,6 +10,7 @@ import com.lng.lngattendancesystem.Models.ConfigurationResponseModels.Configurat
 import com.lng.lngattendancesystem.Models.CustomerBranchDetailsResponseModels.CustomerBranchDetailsResponse;
 import com.lng.lngattendancesystem.Models.CustomerRegModule.CustomerRequest;
 import com.lng.lngattendancesystem.Models.CustomerRegModule.MainCustRegResponce;
+import com.lng.lngattendancesystem.Models.EmployeeByCodeOrMobile.EmployeeCodeMobile;
 import com.lng.lngattendancesystem.Models.EmployeeDetalies.EmpMainOtpResponce;
 import com.lng.lngattendancesystem.Models.FaceRegistration.MainRegresponce;
 import com.lng.lngattendancesystem.Models.GetDateTimeFromSerevr.GetServerDateTimeResponce;
@@ -34,12 +35,19 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public interface ApiInterface {
 
+    //new updates
+    @POST("tab/employee/getEmployeeByCodeOrMobile")
+    Call<EmployeeCodeMobile> getEmpByCodeOrMobile (@Body JsonObject jsonObject);
+
     @POST("tab/customer/setup/generateOtpForCustomer")
     Call<MainCustRegResponce> getCustRegister(@Body JsonObject customerRequest);
+
 
     @POST("tab/customer/setup/getCustomerBranchDetailsByBrCodeAndCustCode")
     Call<CustomerBranchDetailsResponse> getcustDetalies(@Body JsonObject jsonObject);

@@ -83,7 +83,7 @@
                                 android:fontFamily="@font/montserrat"
                                 android:gravity="center_vertical"
 
-                                android:text=" Manjunath.K"
+                                android:text=" Vishal P VIjayan"
                                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
                                 android:textColor="@android:color/white" />
 
@@ -111,7 +111,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/montserrat"
                                 android:gravity="center_vertical"
-                                android:text=" 9741070147"
+                                android:text=" 7877559474"
                                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
                                 android:textColor="@android:color/white" />
 

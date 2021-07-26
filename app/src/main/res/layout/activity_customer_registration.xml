@@ -39,6 +39,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:padding="@dimen/spacing_large">
 
                 <LinearLayout
@@ -73,7 +75,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:src="@drawable/user" />
 
                     <EditText
@@ -107,7 +109,7 @@
                         android:layout_gravity="center"
                         android:layout_marginLeft="10dp"
                         android:src="@drawable/ic_branch"
-                        android:tint="@color/colorPrimary" />
+                        app:tint="@color/colorPrimary" />
 
                     <!-- <EditText
                          android:id="@+id/br_code"
@@ -152,7 +154,7 @@
                         android:layout_gravity="center"
                         android:layout_marginLeft="10dp"
                         android:src="@drawable/ic_branch"
-                        android:tint="@color/colorPrimary" />
+                        app:tint="@color/colorPrimary" />
 
                     <EditText
                         android:id="@+id/kiosk_number"
@@ -163,7 +165,6 @@
                         android:digits="0123456789"
                         android:hint="Kiosk Number"
                         android:imeOptions="actionDone"
-
                         android:inputType="number"
                         android:maxLength="4"
                         android:minHeight="@dimen/spacing_xmlarge"
@@ -180,6 +181,7 @@
                     android:layout_marginTop="35dp"
                     android:background="@color/colorPrimary"
                     android:text="VERIFY"
+                    android:fontFamily="@font/montserrat"
                     android:textColor="@color/white" />
 
             </LinearLayout>

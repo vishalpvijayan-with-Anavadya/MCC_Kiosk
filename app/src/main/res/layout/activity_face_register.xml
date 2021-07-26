@@ -37,7 +37,7 @@
 
         <ImageView
             android:id="@+id/profile_view"
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_gravity="center"
             android:background="@color/colorPrimary"
@@ -59,6 +59,7 @@
                 android:layout_marginBottom="@dimen/spacing_mlarge"
                 android:background="@color/colorPrimary"
                 android:gravity="center"
+                android:fontFamily="@font/montserrat"
                 android:text="CLICK HERE TO REGISTER"
                 android:textColor="@color/white" />
 
